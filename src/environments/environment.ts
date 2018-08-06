@@ -2,8 +2,18 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// Pego el objeto de firebase (de la documentación de Angular Fire2) y cambiamos las configuraciones con los datos de firebase
+
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyC8bbFn20f76gReAytaPrgPYGltEWF54LU',
+    authDomain: 'firechat-4acab.firebaseapp.com',
+    databaseURL: 'https://firechat-4acab.firebaseio.com',
+    projectId: 'firechat-4acab',
+    storageBucket: 'firechat-4acab.appspot.com',
+    messagingSenderId: '75399376674'
+  }
 };
 
 /*
