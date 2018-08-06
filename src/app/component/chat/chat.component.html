@@ -3,7 +3,7 @@
 
 <div class="app-mensajes" id="app-mensajes">
 
-    <div class="text-right" *ngFor="let chat of chatService.chat">
+    <div class="text-right" *ngFor="let chat of chatService.chats">
         <span class="badge badge-success">Vir:</span>
         <p>{{ chat.mensaje }}</p>
     </div>

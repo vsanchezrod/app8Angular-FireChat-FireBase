@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 // Se carga el servicio
 import { ChatService } from '../../services/chat.service';
@@ -9,16 +9,31 @@ import { ChatService } from '../../services/chat.service';
   templateUrl: './chat.component.html',
   styles: []
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit {
 
   mensaje: string = '';
+
+  // Para que el scroll siempre esté abajo
+  elemento: any;
 
   constructor(public chatService: ChatService) {
 
     // Subscripción al observable
-    this.chatService.cargarMensajes().subscribe();
+    this.chatService.cargarMensajes().subscribe( () => {
+
+      setTimeout(() => {
+        this.elemento.scrollTop = this.elemento.scrollHeight;
+      }, 20);
+
+    });
 
   }
+
+  ngOnInit(): void {
+    // Se quiere hacer referencia al elemento div con id "app-mensaje"
+    this.elemento = document.getElementById('app-mensajes');
+  }
+
 
   // Método para enviar mensajes
   enviarMensaje() {
