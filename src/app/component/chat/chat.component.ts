@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+// Se carga el servicio
+import { ChatService } from '../../services/chat.service';
+
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -9,7 +13,13 @@ export class ChatComponent {
 
   mensaje: string = '';
 
-  constructor() { }
+  constructor(private chatService: ChatService) {
+
+    this.chatService.cargarMensajes().subscribe( mensajes => {
+      console.log(mensajes);
+    });
+
+  }
 
   // Método para enviar mensajes
   enviarMensaje() {

@@ -12,8 +12,11 @@ import { environment } from '../environments/environment';
 // Para los formularios (ngModel)
 import { FormsModule } from '@angular/forms';
 
-// Componentes
+// Componentss
 import { ChatComponent } from './component/chat/chat.component';
+
+// Services
+import { ChatService } from './services/chat.service';
 
 
 @NgModule({
@@ -29,7 +32,9 @@ import { ChatComponent } from './component/chat/chat.component';
     AngularFireStorageModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    ChatService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
