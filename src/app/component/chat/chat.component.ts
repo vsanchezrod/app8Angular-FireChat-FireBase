@@ -13,17 +13,30 @@ export class ChatComponent {
 
   mensaje: string = '';
 
-  constructor(private chatService: ChatService) {
+  constructor(public chatService: ChatService) {
 
-    this.chatService.cargarMensajes().subscribe( mensajes => {
-      console.log(mensajes);
-    });
+    // Subscripción al observable
+    this.chatService.cargarMensajes().subscribe();
 
   }
 
   // Método para enviar mensajes
   enviarMensaje() {
     console.log(this.mensaje);
+
+    // Si la longitud del mensaje es 0, no se hace nada
+    if (this.mensaje.length === 0) {
+      return;
+    }
+
+    // Si hay un mensaje escrito, lo agrego a firebase. Este método devuelve una promesa por lo que se puede usar then y catch
+    this.chatService.agregarMensaje(this.mensaje)
+        .then( () => {
+          console.log('Mensaje guardado');
+          this.mensaje = '';
+        })
+        .catch((err) => { console.error('Error ', err); });
+
   }
 
 }
