@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-// Angular Fire2
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+// Servicio chat
+import { ChatService } from './services/chat.service';
+
 
 @Component({
   selector: 'app-root',
@@ -11,11 +11,5 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
 
-  chats: Observable<any[]>;
-
-  constructor(db: AngularFirestore) {
-
-    // Cambiamos items por la colección que se haya creado en Firebase
-    this.chats = db.collection('chats').valueChanges();
-  }
+  constructor(public chatService: ChatService) {}
 }

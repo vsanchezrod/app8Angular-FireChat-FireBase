@@ -48,11 +48,6 @@ export class ChatService {
       this.usuario.foto = user.photoURL;
 
     });
-
-
-
-
-
   }
 
 
@@ -84,9 +79,10 @@ export class ChatService {
 
     // Se crea una variable de tipo mensaje. FALTA el uid del usuario
     let mensaje: Mensaje = {
-      nombre: 'Prueba',
+      nombre: this.usuario.nombre,
       mensaje: texto,
       fecha: new Date().getTime(),
+      uid: this.usuario.uid,
     };
 
     // Se manda el mensaje (devuelve una promesa, por lo que se puede usar el catch en cualquier lado que se necesite)
@@ -97,10 +93,19 @@ export class ChatService {
 
   // LOGIN CON GOOGLE PROVIDER
   login(proveedor: string) {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    if (proveedor === 'google') {
+      this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    }
+
+    if (proveedor === 'twitter') {
+      this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
+    }
   }
 
   logout() {
+
+    // Cuando se hace logout el usuario se iguala a un objeto vacío
+    this.usuario = {};
     this.afAuth.auth.signOut();
   }
 

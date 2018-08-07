@@ -3,6 +3,10 @@
     margin-bottom: 150px;
 }
 
+.mr5 {
+    margin-right: 5px;
+}
+
 .puntero {
     cursor: pointer;
 }
