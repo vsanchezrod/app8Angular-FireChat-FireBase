@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 // Componentss
 import { ChatComponent } from './component/chat/chat.component';
+import { LoginComponent } from './component/login/login.component';
 
 // Services
 import { ChatService } from './services/chat.service';
@@ -22,7 +23,8 @@ import { ChatService } from './services/chat.service';
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent
+    ChatComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
